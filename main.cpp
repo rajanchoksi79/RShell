@@ -1,9 +1,23 @@
-#include <stdio.h>
+#include <iostream>
+#include <string>
 
 int main() 
 {
-    printf("this is main file of this shell\n");
-    printf("one change here to test\n");
-    printf("one more addition to this file\n");
+    while (true) 
+    {   
+        std::cout << "R:-> ";
+        std::string user_input;
+        std::getline(std::cin, user_input);
+
+        if (user_input == "quit" || user_input == "exit") 
+        {
+            break;
+        }
+        else 
+        {
+            std::cout << "User Input: " << user_input << std::endl;
+        }
+    }
+
     return 0;
 }
