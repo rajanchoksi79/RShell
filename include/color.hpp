@@ -22,6 +22,7 @@ namespace Color_namespace
             static inline const std::string bold_green   = "\033[1;32m";
             static inline const std::string bold_yellow  = "\033[1;33m";
             static inline const std::string bold_blue    = "\033[1;34m";
+            static inline const std::string bold_cyan    = "\033[1;36m";
     };
 }
 
