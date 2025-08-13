@@ -13,7 +13,7 @@ int main()
         Color color;
 
         // for now i am keeping cyan color if you want then change it
-        std::cout << color.cyan << "\n R:--> " << color.reset;
+        std::cout << color.cyan << "\nRShell:--> " << color.reset;
         std::string user_input;
         std::getline(std::cin, user_input);
 
