@@ -6,6 +6,7 @@ namespace COMMANDS
     class Command
     {
         public:
+            int create_file(const char *path);
             int read_file(const char *path);
     };
 }

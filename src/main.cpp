@@ -6,9 +6,9 @@
 using namespace ARGS;
 using namespace Color_namespace;
 
-int main(int argc, char argv[]) 
+int main() 
 {
-    
+
     while (true) 
     {   
         Arg_Parse arg_ins;
@@ -27,8 +27,7 @@ int main(int argc, char argv[])
         }
         else 
         {
-            arg_ins.arg_parsing(argc, argv);
-            std::cout << "User Input: " << user_input << std::endl;
+            arg_ins.arg_parsing(user_input);
         }
     }
 
