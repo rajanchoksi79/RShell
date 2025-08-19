@@ -37,6 +37,10 @@ int Arg_Parse::arg_parsing(std::string user_input)
         {
             command_executor.read_file(argument_vector[1].c_str());
         }
+        else if (argument_vector[0] == "removef") 
+        {
+            command_executor.remove_file(argument_vector[1].c_str());
+        }
     }
 
     return 0;

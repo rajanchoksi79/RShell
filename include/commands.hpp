@@ -8,6 +8,7 @@ namespace COMMANDS
         public:
             int create_file(const char *path);
             int read_file(const char *path);
+            int remove_file(const char *path);
     };
 }
 

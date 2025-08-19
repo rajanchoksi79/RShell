@@ -93,4 +93,22 @@ int Command::read_file(const char *path)
 
 // }
 
-int 
+int Command::remove_file(const char *path) 
+{
+    // checking if the file we want to remove if exists in the first plave
+    if (access(path, F_OK) == -1) 
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    // using general one remove() instead of specific unlink() here, change it if you want.
+    if (remove(path) == -1) 
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    std::cout << "-> File removed successfully\n";
+    return 0; 
+}
