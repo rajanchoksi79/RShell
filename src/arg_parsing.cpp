@@ -24,7 +24,7 @@ int Arg_Parse::arg_parsing(std::string user_input)
 
     if (argument_vector.size() < 2) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << std::endl;
+        std::cerr << "-> Error occured, Please enter valid flag to continue" << std::endl;
         return 1;
     }
     else 
@@ -40,6 +40,10 @@ int Arg_Parse::arg_parsing(std::string user_input)
         else if (argument_vector[0] == "removef") 
         {
             command_executor.remove_file(argument_vector[1].c_str());
+        }
+        else if (argument_vector[0] == "writef") 
+        {
+            command_executor.write_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
     }
 

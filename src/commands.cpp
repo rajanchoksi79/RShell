@@ -88,10 +88,54 @@ int Command::read_file(const char *path)
     return 0;
 }
 
-// int Command::write_file(const char *path, std::string text) 
-// {
+int Command::write_file(const char *path, const char *text) 
+{
+    // checking if the file in which we want to write exists or not
+    if (access(path, F_OK) == -1) 
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
 
-// }
+    // opened file with write only, because i am writing in this file and also with append, so in non empty file, it append the given text at the end.
+    int fd = open(path, O_WRONLY | O_APPEND);
+    if (fd == -1) 
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    ssize_t text_length {strlen(text)};
+    ssize_t total_bytes_written {0};
+
+    while (total_bytes_written < text_length) 
+    {
+        ssize_t bytes_write = write(fd, text + total_bytes_written, text_length - total_bytes_written);
+        
+        if (bytes_write == -1) 
+        {
+            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            if (close(fd) == -1) 
+            {
+                std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+                return 1;
+            }
+            return 1;
+        }
+
+        total_bytes_written += bytes_write;
+    }     
+
+    if (close(fd) == -1) 
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    std::cout << "-> Given text written in file successfully\n";
+    return 0;
+
+}
 
 int Command::remove_file(const char *path) 
 {
