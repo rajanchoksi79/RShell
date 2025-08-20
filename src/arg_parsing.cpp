@@ -29,7 +29,7 @@ int Arg_Parse::arg_parsing(std::string user_input)
     }
 
     // test code
-    for (std::string arg : argument_vector) 
+    for (auto arg : argument_vector) 
     {
         std::cout << arg << '\n';
     }
