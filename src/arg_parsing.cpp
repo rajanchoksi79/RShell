@@ -8,9 +8,8 @@
 using namespace ARGS;
 using namespace COMMANDS;
 
-int Arg_Parse::arg_parsing(std::string user_input) 
+std::vector<std::string> Arg_Parse::arg_parsing(std::string user_input) 
 {
-    
     // // test code
     // for (auto input : user_input) 
     // {
@@ -28,6 +27,12 @@ int Arg_Parse::arg_parsing(std::string user_input)
         }
     }
 
+    return argument_vector;
+}
+
+int Arg_Parse::arg_handling(std::vector<std::string> argument_vector) 
+{
+    
     // test code
     for (auto arg : argument_vector) 
     {
