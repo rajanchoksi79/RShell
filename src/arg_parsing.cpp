@@ -10,6 +10,14 @@ using namespace COMMANDS;
 
 int Arg_Parse::arg_parsing(std::string user_input) 
 {
+    
+    // // test code
+    // for (auto input : user_input) 
+    // {
+    //     std::cout << input << '\n';
+    // }
+    // std::cout << '\n'; 
+    
     std::vector<std::string> argument_vector;
     std::stringstream ss(user_input);
     std::string token;
@@ -19,6 +27,13 @@ int Arg_Parse::arg_parsing(std::string user_input)
             argument_vector.push_back(token);
         }
     }
+
+    // test code
+    for (std::string arg : argument_vector) 
+    {
+        std::cout << arg << '\n';
+    }
+    std::cout << '\n';
 
     Command command_executor;
 
