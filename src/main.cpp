@@ -8,7 +8,6 @@ using namespace Color_namespace;
 
 int main() 
 {
-
     while (true) 
     {   
         Arg_Parse arg_ins;

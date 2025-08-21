@@ -9,14 +9,11 @@ using namespace ARGS;
 using namespace COMMANDS;
 
 std::vector<std::string> Arg_Parse::arg_parsing(std::string user_input) 
-{
-    // // test code
-    // for (auto input : user_input) 
-    // {
-    //     std::cout << input << '\n';
-    // }
-    // std::cout << '\n'; 
-    
+{    
+
+    // test code
+    std::cout << user_input << std::endl;
+
     std::vector<std::string> argument_vector;
     std::stringstream ss(user_input);
     std::string token;
@@ -64,6 +61,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         else if (argument_vector[0] == "writef") 
         {
             command_executor.write_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+        }
+        else 
+        {
+            std::cout << "No proper argument is provided\n";
         }
     }
 
