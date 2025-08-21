@@ -8,22 +8,8 @@
 using namespace ARGS;
 using namespace COMMANDS;
 
-int Arg_Parse::arg_parsing(std::string user_input) 
-{    
-
-    // test code
-    std::cout << user_input << std::endl;
-
-    std::vector<std::string> argument_vector;
-    std::stringstream ss(user_input);
-    std::string token;
-
-    while(getline(ss, token, ' ')) {
-        if (!token.empty()) {
-            argument_vector.push_back(token);
-        }
-    }
-
+int Arg_Parse::arg_handling(std::vector<std::string> argument_vector) 
+{
     // test code
     for (auto arg : argument_vector) 
     {
@@ -65,3 +51,21 @@ int Arg_Parse::arg_parsing(std::string user_input)
     return 0;
 }
 
+void Arg_Parse::arg_parsing(std::string user_input) 
+{    
+    // test code
+    std::cout << user_input << std::endl;
+
+    std::vector<std::string> argument_vector;
+    std::stringstream ss(user_input);
+    std::string token;
+
+    while(getline(ss, token, ' ')) {
+        if (!token.empty()) {
+            argument_vector.push_back(token);
+        }
+    }
+
+    // handling arguments with the function
+    arg_handling(argument_vector);
+}

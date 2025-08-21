@@ -8,7 +8,8 @@ namespace ARGS
     class Arg_Parse
     {
         public:
-            int arg_parsing(std::string user_input);
+            void arg_parsing(std::string user_input);
+            int arg_handling(std::vector<std::string> argument_vector);
     };
 }
 
