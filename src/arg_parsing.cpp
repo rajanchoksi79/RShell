@@ -8,7 +8,7 @@
 using namespace ARGS;
 using namespace COMMANDS;
 
-std::vector<std::string> Arg_Parse::arg_parsing(std::string user_input) 
+int Arg_Parse::arg_parsing(std::string user_input) 
 {    
 
     // test code
@@ -24,19 +24,13 @@ std::vector<std::string> Arg_Parse::arg_parsing(std::string user_input)
         }
     }
 
-    return argument_vector;
-}
-
-int Arg_Parse::arg_handling(std::vector<std::string> argument_vector) 
-{
-    
     // test code
     for (auto arg : argument_vector) 
     {
         std::cout << arg << '\n';
     }
     std::cout << '\n';
-
+    
     Command command_executor;
 
     if (argument_vector.size() < 2) 
@@ -70,3 +64,4 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 
     return 0;
 }
+
