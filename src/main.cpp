@@ -16,7 +16,7 @@ int main()
         // for now i am keeping cyan color if you want then change it
         std::cout << color.bold_cyan << "\nRShell:~> " << color.reset;
         std::string user_input;
-        std::getline(std::cin, user_input);
+        std::getline(std::cin >> std::ws, user_input);
 
         // for now i am adding one line before any output ok. 
         std::cout << std::endl;
