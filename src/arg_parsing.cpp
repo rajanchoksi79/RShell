@@ -1,17 +1,17 @@
 #include "../include/arg_parsing.hpp"
-#include "../include/commands.hpp"
+#include "../include/file_commands.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <string.h>
 using namespace ARGS;
-using namespace COMMANDS;
+using namespace FILE_COMMANDS;
 
 int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 {
 
-    Command command_executor;
+    File_commands command_executor;
 
     if (argument_vector.size() < 2)
     {
@@ -35,6 +35,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         else if (argument_vector[0] == "writef")
         {
             command_executor.write_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+        }
+        else if (argument_vector[0] == "renamef") 
+        {
+            command_executor.rename_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
         else
         {

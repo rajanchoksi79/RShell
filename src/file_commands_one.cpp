@@ -1,13 +1,13 @@
-#include "../include/commands.hpp"
+#include "../include/file_commands.hpp"
 #include <iostream>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 
-using namespace COMMANDS;
+using namespace FILE_COMMANDS;
 
-int Command::create_file(const char *path) 
+int File_commands::create_file(const char *path) 
 {
     // checking if file already exists, if so then will generate error and return from here.
     if (access(path, F_OK) == 0) 
@@ -35,7 +35,7 @@ int Command::create_file(const char *path)
     return 0;
 }
 
-int Command::read_file(const char *path) 
+int File_commands::read_file(const char *path) 
 {
     if (access(path, F_OK) == -1) 
     {
@@ -88,7 +88,7 @@ int Command::read_file(const char *path)
     return 0;
 }
 
-int Command::write_file(const char *path, const char *text) 
+int File_commands::write_file(const char *path, const char *text) 
 {
     // checking if the file in which we want to write exists or not
     if (access(path, F_OK) == -1) 
@@ -137,7 +137,7 @@ int Command::write_file(const char *path, const char *text)
 
 }
 
-int Command::remove_file(const char *path) 
+int File_commands::remove_file(const char *path) 
 {
     // checking if the file we want to remove if exists in the first plave
     if (access(path, F_OK) == -1) 

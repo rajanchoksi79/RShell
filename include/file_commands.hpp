@@ -1,15 +1,16 @@
-#ifndef COMMANDS_HEADERS
-#define COMMANDS_HEADERS
+#ifndef FILE_COMMANDS_HEADERS
+#define FILE_COMMANDS_HEADERS
 
-namespace COMMANDS 
+namespace FILE_COMMANDS 
 {
-    class Command
+    class File_commands
     {
         public:
             int create_file(const char *path);
             int read_file(const char *path);
             int write_file(const char *path, const char *text);
             int remove_file(const char *path);
+            int rename_file(const char *path_one, const char *path_two);
     };
 }
 
