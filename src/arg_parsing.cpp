@@ -57,12 +57,23 @@ void Arg_Parse::arg_parsing(std::string user_input)
     std::cout << user_input << std::endl;
 
     std::vector<std::string> argument_vector;
-    std::stringstream ss(user_input);
-    std::string token;
+    std::string current_argument = "";
+    bool in_quotes = false;
 
-    while(getline(ss, token, ' ')) {
-        if (!token.empty()) {
-            argument_vector.push_back(token);
+    for (int i = 0; i < user_input.size(); i++) 
+    {
+        if (user_input[i] == '"')
+        {
+            in_quotes = !in_quotes;
+            while(in_quotes) 
+            {
+                current_argument += user_input[i];
+            }
+        }
+
+        if (user_input[i] == ' ') 
+        {
+
         }
     }
 
