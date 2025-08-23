@@ -13,6 +13,7 @@ namespace FILE_COMMANDS
             int copy_file(const char *path_one, const char *path_two);
             int move_file(const char *path_one, const char *path_two);
             int rename_file(const char *path_one, const char *path_two);
+            int file_info(const char *path);
     };
 }
 
