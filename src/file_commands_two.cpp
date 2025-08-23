@@ -7,6 +7,11 @@
 
 using namespace FILE_COMMANDS;
 
+int File_commands::copy_file(const char *path_one, const char *path_two) 
+{
+    
+}
+
 // for now i am implementing this way but i have to see, if there is other better way.
 int File_commands::move_file(const char *path_one, const char *path_two)
 {
