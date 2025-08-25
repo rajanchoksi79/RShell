@@ -7,7 +7,11 @@ namespace Color_namespace
 {
     class Color {
         public:
+            
+            // reset color
             static inline const std::string reset   = "\033[0m";
+            
+            // color variants
             static inline const std::string black   = "\033[30m";
             static inline const std::string red     = "\033[31m";
             static inline const std::string green   = "\033[32m";

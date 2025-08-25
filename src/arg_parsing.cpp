@@ -48,6 +48,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             command_executor.rename_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
+        else if (argument_vector[0] == "detailf") 
+        {
+            command_executor.file_info(argument_vector[1].c_str());
+        }
         else
         {
             std::cout << "No proper argument is provided\n";

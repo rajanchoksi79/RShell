@@ -11,10 +11,9 @@ int main()
     while (true) 
     {   
         Arg_Parse arg_ins;
-        Color color;
 
         // for now i am keeping cyan color if you want then change it
-        std::cout << color.bold_cyan << "\nRShell:~> " << color.reset;
+        std::cout << Color::bold_cyan << "\nRShell:~> " << Color::reset;
         std::string user_input;
         std::getline(std::cin >> std::ws, user_input);
 
