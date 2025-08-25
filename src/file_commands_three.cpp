@@ -5,6 +5,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <ctime>
 
 using namespace FILE_COMMANDS;
 using namespace Color_namespace;
@@ -53,6 +54,18 @@ int File_commands::file_info(const char *path)
     std::cout << "Owner UID: " << file_details.st_uid << '\n';
     std::cout << "Group UID: " << file_details.st_gid << '\n';
     std::cout << "Permissions: " << file_details.st_mode << '\n';
-    
+    std::cout << "File UserId: " << file_details.st_uid << '\n';
+    std::cout << "File GroupId: " << file_details.st_gid << '\n';
+    std::cout << "Last Accessed: " << std::ctime(&file_details.st_atim.tv_sec);
+    std::cout << "Last Modified: " << std::ctime(&file_details.st_mtim.tv_sec);
+
+
+    // closing fd after getting file info.
+    if(close(fd) == -1) 
+    {
+        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        return 1;
+    }
+
     return 0;
 }
