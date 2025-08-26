@@ -1,5 +1,6 @@
 #include "../include/arg_parsing.hpp"
 #include "../include/file_commands.hpp"
+#include "../include/directory_commands.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -7,11 +8,13 @@
 #include <string.h>
 using namespace ARGS;
 using namespace FILE_COMMANDS;
+using namespace DIRECTORY_COMMANDS;
 
 int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 {
 
-    File_commands command_executor;
+    File_commands file_command_executor;
+    Directory_commands dir_command_executor;
 
     if (argument_vector.size() < 2)
     {
@@ -22,35 +25,39 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
     {
         if (argument_vector[0] == "createf")
         {
-            command_executor.create_file(argument_vector[1].c_str());
+            file_command_executor.create_file(argument_vector[1].c_str());
         }
         else if (argument_vector[0] == "readf")
         {
-            command_executor.read_file(argument_vector[1].c_str());
+            file_command_executor.read_file(argument_vector[1].c_str());
         }
         else if (argument_vector[0] == "removef")
         {
-            command_executor.remove_file(argument_vector[1].c_str());
+            file_command_executor.remove_file(argument_vector[1].c_str());
         }
         else if (argument_vector[0] == "writef")
         {
-            command_executor.write_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+            file_command_executor.write_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
-        else if (argument_vector[0] == "copyf") 
+        else if (argument_vector[0] == "copyf")
         {
-            command_executor.copy_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+            file_command_executor.copy_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
-        else if (argument_vector[0] == "movef") 
+        else if (argument_vector[0] == "movef")
         {
-            command_executor.move_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+            file_command_executor.move_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
-        else if (argument_vector[0] == "renamef") 
+        else if (argument_vector[0] == "renamef")
         {
-            command_executor.rename_file(argument_vector[1].c_str(), argument_vector[2].c_str());
+            file_command_executor.rename_file(argument_vector[1].c_str(), argument_vector[2].c_str());
         }
-        else if (argument_vector[0] == "detailf") 
+        else if (argument_vector[0] == "detailf")
         {
-            command_executor.file_info(argument_vector[1].c_str());
+            file_command_executor.file_info(argument_vector[1].c_str());
+        }
+        else if (argument_vector[0] == "createdir")
+        {
+            dir_command_executor.create_directory(argument_vector[1].c_str());
         }
         else
         {
@@ -118,5 +125,4 @@ void Arg_Parse::arg_parsing(std::string user_input)
 
     // handling arguments with the function
     arg_handling(argument_vector);
-
 }
