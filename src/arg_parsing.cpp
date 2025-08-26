@@ -59,6 +59,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             dir_command_executor.create_directory(argument_vector[1].c_str());
         }
+        else if (argument_vector[0] == "readdir") 
+        {
+            dir_command_executor.read_directory(argument_vector[1].c_str());
+        }
         else
         {
             std::cout << "No proper argument is provided\n";

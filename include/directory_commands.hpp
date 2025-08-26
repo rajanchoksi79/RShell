@@ -7,6 +7,7 @@ namespace DIRECTORY_COMMANDS
     {
         public:
             int create_directory(const char *path);
+            int read_directory(const char *path);
     };
 }
 
