@@ -8,6 +8,8 @@ namespace DIRECTORY_COMMANDS
         public:
             int create_directory(const char *path);
             int read_directory(const char *path);
+            int get_current_directory();
+            int remove_directory(const char *path);
     };
 }
 

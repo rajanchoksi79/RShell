@@ -34,7 +34,7 @@ int Directory_commands::create_directory(const char *path)
 }
 
 // reading and printing content of directory
-int read_directory(const char *path)
+int Directory_commands::read_directory(const char *path)
 {
     if (access(path, F_OK) == -1)
     {
@@ -112,5 +112,39 @@ int read_directory(const char *path)
         std::cerr << "-> Error occured " << strerror(errno) << '\n';
         return 1;
     }
+    return 0;
+}
+
+// to get present working directory
+int Directory_commands::get_current_directory() 
+{
+    char buffer[PATH_MAX];
+    
+    if (getcwd(buffer,sizeof(buffer)) == NULL) 
+    {
+        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    std::cout << Color::bold_yellow << "\n-> " << buffer << "\n\n" << Color::reset;
+    return 0;
+}
+
+// this works only on empty directory.
+int Directory_commands::remove_directory(const char *path)
+{
+    if (access(path, F_OK) == -1)
+    {
+        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    if (rmdir(path) == -1)
+    {
+        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    std::cout << "-> Directory removed successfully\n";
     return 0;
 }
