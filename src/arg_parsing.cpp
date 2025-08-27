@@ -76,7 +76,7 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             dir_command_executor.remove_directory(argument_vector[1].c_str());
         }
-        else if (argument_vector[0] == "datetime") 
+        else if (argument_vector[0] == "time") 
         {
             datetime_executor.get_time();
         }
