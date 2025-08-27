@@ -1,6 +1,7 @@
 #include "../include/arg_parsing.hpp"
 #include "../include/file_commands.hpp"
 #include "../include/directory_commands.hpp"
+#include "../include/time_commands.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -9,13 +10,17 @@
 using namespace ARGS;
 using namespace FILE_COMMANDS;
 using namespace DIRECTORY_COMMANDS;
+using namespace DATETIME_COMMANDS;
 
 int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 {
 
+    // creating different instance to execute different types of commands
     File_commands file_command_executor;
     Directory_commands dir_command_executor;
+    Datetime_commands datetime_executor;
 
+    // handling arguments, returning error if there is any, else alloting and executing commands
     if (argument_vector.size() < 1)
     {
         std::cerr << "-> Error occured, Please enter valid flag to continue" << std::endl;
@@ -70,6 +75,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         else if (argument_vector[0] == "removedir") 
         {
             dir_command_executor.remove_directory(argument_vector[1].c_str());
+        }
+        else if (argument_vector[0] == "datetime") 
+        {
+            datetime_executor.get_time();
         }
         else
         {
