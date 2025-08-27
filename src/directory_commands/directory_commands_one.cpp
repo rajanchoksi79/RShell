@@ -83,12 +83,12 @@ int Directory_commands::read_directory(const char *path)
             }
             else if ((file_detail.st_mode & S_IFMT) == S_IFDIR)
             {   
-                std::cout << "├── " << Color::yellow << entry->d_name << Color::reset << '\n';
+                std::cout << "├── " << Color::green << entry->d_name << Color::reset << '\n';
                 directory_count += 1;
             }
             else if ((file_detail.st_mode & S_IFMT) == S_IFLNK)
             {
-                std::cout << "├── " << Color::green << entry->d_name << Color::reset << '\n';
+                std::cout << "├── " << Color::magenta << entry->d_name << Color::reset << '\n';
             }
             else
             {   

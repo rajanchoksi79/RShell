@@ -16,7 +16,7 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
     File_commands file_command_executor;
     Directory_commands dir_command_executor;
 
-    if (argument_vector.size() < 2)
+    if (argument_vector.size() < 1)
     {
         std::cerr << "-> Error occured, Please enter valid flag to continue" << std::endl;
         return 1;
@@ -62,6 +62,14 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         else if (argument_vector[0] == "readdir") 
         {
             dir_command_executor.read_directory(argument_vector[1].c_str());
+        }
+        else if (argument_vector[0] == "getdir") 
+        {
+            dir_command_executor.get_current_directory();
+        }
+        else if (argument_vector[0] == "removedir") 
+        {
+            dir_command_executor.remove_directory(argument_vector[1].c_str());
         }
         else
         {
