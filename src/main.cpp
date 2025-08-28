@@ -18,7 +18,7 @@ int main()
         std::getline(std::cin >> std::ws, user_input);
 
         // for now i am adding one line before any output ok. 
-        std::cout << std::endl;
+        std::cout << '\n';
         if (user_input == "quit" || user_input == "exit") 
         {
             break;

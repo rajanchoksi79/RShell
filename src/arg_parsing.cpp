@@ -2,6 +2,7 @@
 #include "../include/file_commands.hpp"
 #include "../include/directory_commands.hpp"
 #include "../include/time_commands.hpp"
+#include "../include/utilities.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -11,6 +12,7 @@ using namespace ARGS;
 using namespace FILE_COMMANDS;
 using namespace DIRECTORY_COMMANDS;
 using namespace DATETIME_COMMANDS;
+using namespace UTILITIES_COMMANDS;
 
 int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 {
@@ -19,6 +21,7 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
     File_commands file_command_executor;
     Directory_commands dir_command_executor;
     Datetime_commands datetime_executor;
+    Utilities_commands utilities_executor;
 
     // handling arguments, returning error if there is any, else alloting and executing commands
     if (argument_vector.size() < 1)
@@ -79,6 +82,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         else if (argument_vector[0] == "time") 
         {
             datetime_executor.get_time();
+        }
+        else if (argument_vector[0] == "print") 
+        {
+            utilities_executor.print_text(argument_vector[1]);
         }
         else
         {
