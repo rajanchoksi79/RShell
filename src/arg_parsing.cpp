@@ -87,6 +87,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             utilities_executor.print_text(argument_vector[1]);
         }
+        else if (argument_vector[0] == "pattern") 
+        {
+            utilities_executor.find_pattern(argument_vector[1], argument_vector[2].c_str());
+        } 
         else
         {
             std::cout << "No proper argument is provided\n";

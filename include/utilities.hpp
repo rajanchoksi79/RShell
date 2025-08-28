@@ -9,6 +9,7 @@ namespace UTILITIES_COMMANDS
     {
         public:
             int print_text(std::string text);
+            int find_pattern(std::string pattern, const char *path);
     };
 }
 
