@@ -33,14 +33,14 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     }
 
     ssize_t buffer_read;
-    char buffer[128];
+    char buffer[64];
 
     // test code
     int count = 1;
 
     while ( (buffer_read = read(fd, buffer, sizeof(buffer))) > 0 ) 
     {
-        std::cout << count;
+        std::cout << count << "-> ";
         std::cout << buffer << '\n';
         count++; 
     }
