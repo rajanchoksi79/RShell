@@ -36,13 +36,13 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     char buffer[64];
 
     // test code
-    int count = 1;
+    int count = 0;
 
     while ((buffer_read = read(fd, buffer, sizeof(buffer))) > 0) 
     {
+        count++; 
         std::cout << count << "-> ";
         std::cout << buffer << '\n';
-        count++; 
     }
 
     if (buffer_read == -1) 
