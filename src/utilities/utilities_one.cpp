@@ -33,17 +33,26 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     }
 
     ssize_t buffer_read;
+    // for now i am keeping buffer upto 1024 chars, but if needed then set it to max value thing.
     char buffer[1024];
-
-    // test code
     int count = 0;
+    std::string line;
 
     while ((buffer_read = read(fd, buffer, sizeof(buffer))) > 0)
     {
-        count++;
-
-        std::cout << count << "-> ";
-        std::cout << buffer << '\n';
+        for (ssize_t i = 0; i < buffer_read; i++) 
+        {
+            if (buffer[i] == '\n') 
+            {
+                count++;
+                std::cout << "Line: " << count << " -> " << line << '\n';
+                line.clear();
+            }
+            else 
+            {
+                line.push_back(buffer[i]);
+            }
+        }
     }
 
     if (buffer_read == -1)
