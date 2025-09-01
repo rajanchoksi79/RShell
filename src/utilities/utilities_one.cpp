@@ -14,6 +14,12 @@ int Utilities_commands::print_text(std::string text)
     return 0;
 }
 
+// this method is for matching pattern with sub string of each line, that i will use in find pattern method.
+int Utilities_commands::matching_pattern(std::string line) 
+{
+
+}
+
 int Utilities_commands::find_pattern(std::string pattern, const char *path)
 {
     // checking file if it exist and also if it is readable
@@ -45,6 +51,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
             if (buffer[i] == '\n') 
             {
                 count++;
+
                 std::cout << "Line: " << count << " -> " << line << '\n';
                 line.clear();
             }
