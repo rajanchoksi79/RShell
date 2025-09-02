@@ -1,4 +1,5 @@
 #include "../include/utilities.hpp"
+#include "../include/color.hpp"
 #include <iostream>
 #include <unistd.h>
 #include <string.h>
@@ -8,12 +9,17 @@
 #include <vector>
 
 using namespace UTILITIES_COMMANDS;
+using namespace Color_namespace;
+
 
 int Utilities_commands::print_text(std::string text)
 {
     std::cout << text << '\n';
     return 0;
 }
+
+// now i am making this global variable so that i can use in two methods
+int count = 0;
 
 // this method is for matching pattern with sub string of each line, that i will use in find pattern method.
 int Utilities_commands::matching_pattern(std::string line, std::string pattern) 
@@ -40,7 +46,7 @@ int Utilities_commands::matching_pattern(std::string line, std::string pattern)
    {
         if (pattern == line_array[j]) 
         {
-            std::cout << "Line: " << line << '\n';
+            std::cout << Color::bold_yellow <<"Line: " << count << " -> " << Color::reset << '\t' << line << '\n';
             return 0;
         }
    }
@@ -69,7 +75,6 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     ssize_t buffer_read;
     // for now i am keeping buffer upto 1024 chars, but if needed then set it to max value thing.
     char buffer[1024];
-    // int count = 0;
     std::string line;
 
     while ((buffer_read = read(fd, buffer, sizeof(buffer))) > 0)
@@ -78,7 +83,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
         {
             if (buffer[i] == '\n') 
             {
-                // count++;
+                count++;
                 Utilities_commands::matching_pattern(line, pattern);
                 line.clear();
             }
