@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <string>
+#include <vector>
 
 using namespace UTILITIES_COMMANDS;
 
@@ -15,9 +16,34 @@ int Utilities_commands::print_text(std::string text)
 }
 
 // this method is for matching pattern with sub string of each line, that i will use in find pattern method.
-int Utilities_commands::matching_pattern(std::string line) 
+int Utilities_commands::matching_pattern(std::string line, std::string pattern) 
 {
+   // for now i am doing split thing manually, later if you like you can add method or library thing.
+   std::vector<std::string> line_array;
+   std::string word; 
 
+   for (int i = 0; i < line.size(); i++) 
+   {
+        if(line[i] == ' ') 
+        {
+            line_array.push_back(word);
+            word.clear();
+        } 
+        else 
+        {
+            word.push_back(line[i]);
+        }
+   } 
+
+   // matching pattern with each element of line
+   for (int j = 0; j < line_array.size(); j++) 
+   {
+        if (pattern == line_array[j]) 
+        {
+            std::cout << "Line: " << line << '\n';
+            return;
+        }
+   }
 }
 
 int Utilities_commands::find_pattern(std::string pattern, const char *path)
@@ -51,7 +77,6 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
             if (buffer[i] == '\n') 
             {
                 count++;
-
                 std::cout << "Line: " << count << " -> " << line << '\n';
                 line.clear();
             }
