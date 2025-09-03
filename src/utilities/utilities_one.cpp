@@ -46,7 +46,24 @@ int Utilities_commands::matching_pattern(std::string line, std::string pattern)
    {
         if (pattern == line_array[j]) 
         {
-            std::cout << Color::bold_yellow <<"Line: " << count << " -> " << Color::reset << '\t' << line << '\n';
+            std::cout << Color::bold_yellow << "Line: " << count << " ~> " << Color::reset << '\t';
+
+            for (int k = 0; k < line_array.size(); k++) 
+            {
+                if (pattern == line_array[k]) 
+                {
+                    std::cout << Color::bold_cyan << line_array[k] << " " << Color::reset; 
+                }  
+                else 
+                {
+                    std::cout << line_array[k] << " ";
+                }
+            }
+
+            std::cout << "\n\n";
+
+            // std::cout << Color::bold_yellow <<"Line: " << count << " -> " << Color::reset << '\t' << line << '\n';
+
             return 0;
         }
    }
