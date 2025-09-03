@@ -102,7 +102,7 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
 
 void Arg_Parse::arg_parsing(std::string user_input)
 {
-
+    
     std::vector<std::string> argument_vector;
     std::string non_literal_argument = "";
     std::string literal_argument = "";

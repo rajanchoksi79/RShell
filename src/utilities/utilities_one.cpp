@@ -52,7 +52,7 @@ int Utilities_commands::matching_pattern(std::string line, std::string pattern)
             {
                 if (pattern == line_array[k]) 
                 {
-                    std::cout << Color::bold_cyan << line_array[k] << " " << Color::reset; 
+                    std::cout << Color::bold_red << line_array[k] << " " << Color::reset; 
                 }  
                 else 
                 {
@@ -123,6 +123,18 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     }
 
     if (close(fd) == -1)
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    return 0;
+}
+
+int Utilities_commands::count_details(const char *path) 
+{
+    // checking file if it exist and also if it is readable
+    if (access(path, F_OK) == -1 || access(path, R_OK) == -1)
     {
         std::cerr << "-> Error occured, " << strerror(errno) << '\n';
         return 1;
