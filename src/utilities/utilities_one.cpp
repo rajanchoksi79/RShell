@@ -154,14 +154,24 @@ int Utilities_commands::count_details(const char *path)
     char buffer[1024];
     std::string line;
     int line_count = 0;
+    int character_count = 0;
+    int word_count = 0;
 
     while ((buffer_read = read(fd, buffer, sizeof(buffer))) > 0)
     {
         for (ssize_t i = 0; i < buffer_read; i++) 
-        {
+        {   
+            // increasing character in every character even in new line character for now.
+            character_count++;
+
+            // so at every new line character there is new line so increasing line counter at that point.
             if (buffer[i] == '\n') 
             {
                 line_count++;
+            }
+            else if (buffer[i] == ' ') 
+            {
+                word_count++;
             }
         }
     }
@@ -184,6 +194,8 @@ int Utilities_commands::count_details(const char *path)
     }
 
     // displaying various counts
+    std::cout << Color::bold_yellow << "-> Character Count: " << Color::reset << character_count << '\n';
+    std::cout << Color::bold_yellow << "-> Word Count: " << Color::reset << word_count << '\n';
     std::cout << Color::bold_yellow << "-> Line Count: " << Color::reset << line_count << '\n';
     return 0;
 }
