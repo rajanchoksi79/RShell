@@ -14,7 +14,7 @@ using namespace Color_namespace;
 
 int Utilities_commands::print_text(std::string text)
 {
-    std::cout << text << '\n';
+    std::cout << Color::bold_yellow << "-> " << Color::reset << text << '\n';
     return 0;
 }
 
@@ -131,6 +131,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     return 0;
 }
 
+// for now i am just including word, characters and line count not others except these.
 int Utilities_commands::count_details(const char *path) 
 {
     // checking file if it exist and also if it is readable
