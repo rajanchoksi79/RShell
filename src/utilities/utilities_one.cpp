@@ -140,5 +140,50 @@ int Utilities_commands::count_details(const char *path)
         return 1;
     }
 
+    // creating file descriptor for opening file to read it later
+    int fd;
+    fd = open(path, O_RDONLY);
+    if (fd == -1)
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    ssize_t buffer_read;
+    // for now i am keeping buffer upto 1024 chars, but if needed then set it to max value thing.
+    char buffer[1024];
+    std::string line;
+    int line_count = 0;
+
+    while ((buffer_read = read(fd, buffer, sizeof(buffer))) > 0)
+    {
+        for (ssize_t i = 0; i < buffer_read; i++) 
+        {
+            if (buffer[i] == '\n') 
+            {
+                line_count++;
+            }
+        }
+    }
+
+    if (buffer_read == -1)
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        if (close(fd) == -1)
+        {
+            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            return 1;
+        }
+        return 1;
+    }
+
+    if (close(fd) == -1)
+    {
+        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        return 1;
+    }
+
+    // displaying various counts
+    std::cout << Color::bold_yellow << "-> Line Count: " << Color::reset << line_count << '\n';
     return 0;
 }
