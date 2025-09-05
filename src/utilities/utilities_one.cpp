@@ -14,7 +14,7 @@ using namespace Color_namespace;
 
 int Utilities_commands::print_text(std::string text)
 {
-    std::cout << Color::bold_yellow << "-> " << Color::reset << text << '\n';
+    std::cout << Color::bold_yellow << "~> " << Color::reset << text << '\n';
     return 0;
 }
 
@@ -76,7 +76,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     // checking file if it exist and also if it is readable
     if (access(path, F_OK) == -1 || access(path, R_OK) == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -85,7 +85,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
     fd = open(path, O_RDONLY);
     if (fd == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -113,10 +113,10 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
 
     if (buffer_read == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         if (close(fd) == -1)
         {
-            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured, " << strerror(errno) << '\n';
             return 1;
         }
         return 1;
@@ -124,7 +124,7 @@ int Utilities_commands::find_pattern(std::string pattern, const char *path)
 
     if (close(fd) == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -137,7 +137,7 @@ int Utilities_commands::count_details(const char *path)
     // checking file if it exist and also if it is readable
     if (access(path, F_OK) == -1 || access(path, R_OK) == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -146,7 +146,7 @@ int Utilities_commands::count_details(const char *path)
     fd = open(path, O_RDONLY);
     if (fd == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -198,5 +198,14 @@ int Utilities_commands::count_details(const char *path)
     std::cout << Color::bold_yellow << "-> Character Count: " << Color::reset << character_count << '\n';
     std::cout << Color::bold_yellow << "-> Word Count: " << Color::reset << word_count << '\n';
     std::cout << Color::bold_yellow << "-> Line Count: " << Color::reset << line_count << '\n';
+    return 0;
+}
+
+int Utilities_commands::get_process_id() 
+{
+    pid_t process_id = getpid();
+
+    std::cout << Color::bold_yellow << "~> Process Id of current process is: " << Color::reset << process_id << '\n'; 
+
     return 0;
 }

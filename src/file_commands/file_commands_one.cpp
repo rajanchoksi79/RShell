@@ -12,7 +12,7 @@ int File_commands::create_file(const char *path)
     // checking if file already exists, if so then will generate error and return from here.
     if (access(path, F_OK) == 0) 
     {
-        std::cout << "-> Error occured, file already exists\n";
+        std::cout << "~> Error occured, file already exists\n";
         return 1; 
     }
 
@@ -21,17 +21,17 @@ int File_commands::create_file(const char *path)
     int fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (fd == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
     if (close(fd) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
-    std::cout << "-> File created successfully" << '\n';
+    std::cout << "~> File created successfully" << '\n';
     return 0;
 }
 
@@ -39,7 +39,7 @@ int File_commands::read_file(const char *path)
 {
     if (access(path, F_OK) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -47,14 +47,14 @@ int File_commands::read_file(const char *path)
     fd = open(path, O_RDONLY);
     if (fd == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
     // for now i am keeping reading access seperatly if needed then merge it with above access one.
     if (access(path, R_OK) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }    
 
@@ -70,10 +70,10 @@ int File_commands::read_file(const char *path)
 
     if (byte_read == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         if (close(fd) == -1) 
         {
-            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured, " << strerror(errno) << '\n';
             return 1;   
         }
         return 1;
@@ -81,7 +81,7 @@ int File_commands::read_file(const char *path)
 
     if (close(fd) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -93,7 +93,7 @@ int File_commands::write_file(const char *path, const char *text)
     // checking if the file in which we want to write exists or not
     if (access(path, F_OK) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -101,7 +101,7 @@ int File_commands::write_file(const char *path, const char *text)
     int fd = open(path, O_WRONLY | O_APPEND);
     if (fd == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -114,10 +114,10 @@ int File_commands::write_file(const char *path, const char *text)
         
         if (bytes_write == -1) 
         {
-            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured, " << strerror(errno) << '\n';
             if (close(fd) == -1) 
             {
-                std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+                std::cerr << "~> Error occured, " << strerror(errno) << '\n';
                 return 1;
             }
             return 1;
@@ -128,11 +128,11 @@ int File_commands::write_file(const char *path, const char *text)
 
     if (close(fd) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
-    std::cout << "-> Given text written in file successfully\n";
+    std::cout << "~> Given text written in file successfully\n";
     return 0;
 
 }
@@ -142,17 +142,17 @@ int File_commands::remove_file(const char *path)
     // checking if the file we want to remove if exists in the first plave
     if (access(path, F_OK) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
     // using general one remove() instead of specific unlink() here, change it if you want.
     if (remove(path) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
-    std::cout << "-> File removed successfully\n";
+    std::cout << "~> File removed successfully\n";
     return 0; 
 }

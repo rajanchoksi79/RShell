@@ -26,6 +26,6 @@ int Datetime_commands::get_time()
     std::tm local_time = *std::localtime(&now_time);
 
     // on success displaying time data and return success
-    std::cout << Color::bold_yellow << "-> Current Time: " << Color::reset << std::put_time(&local_time, "%H:%M:%S") << '\n';
+    std::cout << Color::bold_yellow << "~> Current Time: " << Color::reset << std::put_time(&local_time, "%H:%M:%S") << '\n';
     return 0;
 }

@@ -91,8 +91,13 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             utilities_executor.find_pattern(argument_vector[1], argument_vector[2].c_str());
         } 
-        else if (argument_vector[0] == "count") {
+        else if (argument_vector[0] == "count") 
+        {
             utilities_executor.count_details(argument_vector[1].c_str());
+        }
+        else if (argument_vector[0] == "processid") 
+        {
+            utilities_executor.get_process_id();
         }
         else
         {
