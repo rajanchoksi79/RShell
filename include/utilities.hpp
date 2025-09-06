@@ -13,6 +13,7 @@ namespace UTILITIES_COMMANDS
             int find_pattern(std::string pattern, const char *path);
             int count_details(const char *path);
             int get_process_id();
+            int get_parents_process_id();
     };
 }
 

@@ -99,6 +99,10 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
         {
             utilities_executor.get_process_id();
         }
+        else if (argument_vector[0] == "pprocessid") 
+        {
+            utilities_executor.get_parents_process_id();
+        }
         else
         {
             std::cout << "No proper argument is provided\n";

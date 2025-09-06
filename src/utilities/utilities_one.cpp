@@ -209,3 +209,12 @@ int Utilities_commands::get_process_id()
 
     return 0;
 }
+
+int Utilities_commands::get_parents_process_id() 
+{   
+    pid_t parents_process_id();
+ 
+    std::cout << Color::bold_yellow << "~> Process Id of parent process is: " << Color::reset << parents_process_id << '\n';
+
+    return 0;
+}
