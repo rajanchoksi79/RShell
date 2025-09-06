@@ -26,7 +26,7 @@ int Arg_Parse::arg_handling(std::vector<std::string> argument_vector)
     // handling arguments, returning error if there is any, else alloting and executing commands
     if (argument_vector.size() < 1)
     {
-        std::cerr << "-> Error occured, Please enter valid flag to continue" << std::endl;
+        std::cerr << "~> Error occured, Please enter valid flag to continue" << std::endl;
         return 1;
     }
     else
