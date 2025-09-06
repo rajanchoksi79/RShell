@@ -17,19 +17,19 @@ int Directory_commands::create_directory(const char *path)
     // checking if the given directory exist or not
     if (access(path, F_OK) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
     // creating directory and returning error in case of error
     if (mkdir(path, 0755) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;        
     }
 
     // returning success message in case of success
-    std::cout << "-> New directory created successfully" << '\n';
+    std::cout << "~> New directory created successfully" << '\n';
     return 0;
 }
 
@@ -38,17 +38,17 @@ int Directory_commands::read_directory(const char *path)
 {
     if (access(path, F_OK) == -1)
     {
-        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured " << strerror(errno) << '\n';
         return 1;
     }
 
     DIR *dir = opendir(path);
     if (dir == NULL)
     {
-        std::cerr << "-> Error occured " << strerror(errno) << std::endl;
+        std::cerr << "~> Error occured " << strerror(errno) << std::endl;
         if (closedir(dir) == -1)
         {
-            std::cerr << "-> Error occured " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured " << strerror(errno) << '\n';
             return 1;
         }
         return 1;
@@ -97,19 +97,19 @@ int Directory_commands::read_directory(const char *path)
         }
         else 
         {
-            std::cerr << "-> Error occured " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured " << strerror(errno) << '\n';
             return 1;
         }
     }
 
-    std::cout << Color::bold_yellow << "\n-> " << directory_count << (directory_count == 1 ? " Directory, " : " Directories, "); 
+    std::cout << Color::bold_yellow << "\n~> " << directory_count << (directory_count == 1 ? " Directory, " : " Directories, "); 
     
     std::cout << Color::bold_yellow << file_count << (file_count == 1 ? " File" : " Files") << Color::reset << '\n';
     std::cout << '\n';
 
     if (closedir(dir) == -1)
     {
-        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured " << strerror(errno) << '\n';
         return 1;
     }
     return 0;
@@ -122,7 +122,7 @@ int Directory_commands::get_current_directory()
     
     if (getcwd(buffer,sizeof(buffer)) == NULL) 
     {
-        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured " << strerror(errno) << '\n';
         return 1;
     }
 
@@ -135,16 +135,16 @@ int Directory_commands::remove_directory(const char *path)
 {
     if (access(path, F_OK) == -1)
     {
-        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured " << strerror(errno) << '\n';
         return 1;
     }
 
     if (rmdir(path) == -1)
     {
-        std::cerr << "-> Error occured " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured " << strerror(errno) << '\n';
         return 1;
     }
 
-    std::cout << "-> Directory removed successfully\n";
+    std::cout << "~> Directory removed successfully\n";
     return 0;
 }

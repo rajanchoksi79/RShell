@@ -179,10 +179,10 @@ int Utilities_commands::count_details(const char *path)
 
     if (buffer_read == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         if (close(fd) == -1)
         {
-            std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+            std::cerr << "~> Error occured, " << strerror(errno) << '\n';
             return 1;
         }
         return 1;
@@ -190,14 +190,14 @@ int Utilities_commands::count_details(const char *path)
 
     if (close(fd) == -1)
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
     // displaying various counts
-    std::cout << Color::bold_yellow << "-> Character Count: " << Color::reset << character_count << '\n';
-    std::cout << Color::bold_yellow << "-> Word Count: " << Color::reset << word_count << '\n';
-    std::cout << Color::bold_yellow << "-> Line Count: " << Color::reset << line_count << '\n';
+    std::cout << Color::bold_yellow << "~> Character Count: " << Color::reset << character_count << '\n';
+    std::cout << Color::bold_yellow << "~> Word Count: " << Color::reset << word_count << '\n';
+    std::cout << Color::bold_yellow << "~> Line Count: " << Color::reset << line_count << '\n';
     return 0;
 }
 

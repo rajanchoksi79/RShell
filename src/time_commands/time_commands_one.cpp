@@ -17,7 +17,7 @@ int Datetime_commands::get_time()
     // using gettimeofday to get time in time_value instance, return error if there is any, and passing NULL to second argument for now because this time zone thing in second arg is obsolate now.
     if (gettimeofday(&time_value, NULL) == -1) 
     {
-        std::cerr << "-> Error occured, " << strerror(errno) << '\n';
+        std::cerr << "~> Error occured, " << strerror(errno) << '\n';
         return 1;
     }
 
