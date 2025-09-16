@@ -31,7 +31,7 @@ int File_commands::create_file(const char *path)
         return 1;
     }
 
-    std::cout << "~> File created successfully" << '\n';
+    std::cout << "~> File created successfully, " << '\n';
     return 0;
 }
 

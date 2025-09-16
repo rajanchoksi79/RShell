@@ -198,6 +198,7 @@ int Utilities_commands::count_details(const char *path)
     std::cout << Color::bold_yellow << "~> Character Count: " << Color::reset << character_count << '\n';
     std::cout << Color::bold_yellow << "~> Word Count: " << Color::reset << word_count << '\n';
     std::cout << Color::bold_yellow << "~> Line Count: " << Color::reset << line_count << '\n';
+    
     return 0;
 }
 
